@@ -28,7 +28,7 @@ public class HomeController {
     @GetMapping("/register")
     public String showRegistrationPage(Model model) {
         model.addAttribute("user", new User());
-        return "registration";
+        return "register";
     }
 
     @PostMapping("/register")
@@ -37,7 +37,7 @@ public class HomeController {
         model.addAttribute("user", user);
         if (result.hasErrors())
         {
-            return "registration";
+            return "register";
         }
         else
         {
