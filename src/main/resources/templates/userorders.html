@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Message List</h1>
+<table>
+    <tr>
+        <th>Title&nbsp;&nbsp;&nbsp;</th>
+        <th>Content&nbsp;&nbsp;&nbsp;</th>
+        <th>Posted By&nbsp;&nbsp;&nbsp;</th>
+        <td>Actions</td>
+    </tr>
+    <tr th:each="message : ${messages}">
+        <td th:text="${message.title}"></td>
+        <td th:text="${message.content}"></td>
+        <td th:text="${message.user.username}"></td>
+
+            <td>
+                <span>
+                    <a class="btn btn-primary" th:href="@{/detail/{id}(id=${message.id})}">Details</a>
+                    <a class="btn btn-warning" th:href="@{/update/{id}(id=${message.id})}">Update</a>
+                    <a class="btn btn-danger" th:href="@{/delete/{id}(id=${message.id})}">Delete</a>
+                </span>
+            </td>
+        </div>
+    </tr>
+</table>
+
+<!--    <tr th:each="message : ${messages}">-->
+<!--        <td th:text="${message.title}"></td>-->
+<!--        <td th:text="${message.content}"></td>-->
+<!--        <td th:text="${message.user.username}"></td>-->
+<!--    <span>-->
+<!--        <a class="btn btn-primary" th:href="@{/detail/{id}(id=${message.id})}">Details</a>-->
+<!--        <a class="btn btn-warning" th:href="@{/update/{id}(id=${message.id})}">Update</a>-->
+<!--        <a class="btn btn-danger" th:href="@{/delete/{id}(id=${message.id})}">Delete</a>-->
+<!--    </span>-->
+</body>
+</html>

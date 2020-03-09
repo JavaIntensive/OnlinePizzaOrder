@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!--    <link rel="stylesheet" href="../css/style.css" type="text/css">-->
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav nav-fill">
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <a class="nav-link" href="#">Welcome <span
+                            th:text="${#authentication.name}"></span></a>
+                </li>
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <a class="nav-link" href="/mymessages">My Messages</a>
+                </li>
+
+                <li class="nav-item" sec:authorize="!isAuthenticated()">
+                    <a class="nav-link" href="/">Home</a>
+
+                <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
+                    <a class="nav-link" href="/allmessages">All Messages</a>
+                </li>
+
+                <li class="nav-item" sec:authorize="!isAuthenticated()">
+                    <a class="nav-link" href="/register">Register</a>
+                </li>
+
+                <li class="nav-item" sec:authorize="!isAuthenticated()">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <a class="nav-link" href="/add">Add New Message</a>
+                </li>
+
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+</div>
+
+
+<!--<h1>Message List</h1>-->
+<!--<table>-->
+<!--    <tr>-->
+<!--        <th>Title&nbsp;&nbsp;&nbsp;</th>-->
+<!--        <th>Content&nbsp;&nbsp;&nbsp;</th>-->
+<!--        <th>Posted By&nbsp;&nbsp;&nbsp;</th>-->
+<!--        <td>Actions</td>-->
+<!--    </tr>-->
+<!--    <tr th:each="message : ${messages}">-->
+<!--        <td th:text="${message.title}"></td>-->
+<!--        <td th:text="${message.content}"></td>-->
+<!--        <td th:text="${message.user.username}"></td>-->
+
+
+<!--        <div sec:authorize="hasAuthority('USER')">-->
+<!--        <td>-->
+<!--            <span th:if="${user_id == message.user.id}">-->
+<!--                <a class="btn btn-primary" th:href="@{/detail/{id}(id=${message.id})}">Details</a>-->
+<!--                <a class="btn btn-warning" th:href="@{/update/{id}(id=${message.id})}">Update</a>-->
+<!--                <a class="btn btn-danger" th:href="@{/delete/{id}(id=${message.id})}">Delete</a>-->
+<!--            </span>-->
+<!--&lt;!&ndash;            <a th:href="@{/detail/{id}(id=${message.id})}">Details</a>&ndash;&gt;-->
+<!--&lt;!&ndash;            <a th:href="@{/delete/{id}(id=${message.id})}">Delete</a>&ndash;&gt;-->
+<!--        </td>-->
+<!--        </div>-->
+<!--    </tr>-->
+<!--</table>-->
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    </body>
+</html>
